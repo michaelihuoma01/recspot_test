@@ -15,13 +15,13 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.orange, elevation: 0),
       body: Stack(children: [
+        // Maps image used in place of maps
         Positioned(
             top: 50,
-            child: Container(
-                child: Padding(
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset('assets/images/maps.png'),
-            ))),
+            )),
         Container(
           width: double.infinity,
           height: 80,
@@ -33,9 +33,9 @@ class _MapScreenState extends State<MapScreen> {
         ),
         // Map search box defined in widgets folder
         Column(
-          children:  [
-            const Text('Your Route', style:   TextStyle(color: Colors.white, fontSize: 23)),
-            const MapSearchBox(),
+          children:  const [
+            Text('Your Route', style:   TextStyle(color: Colors.white, fontSize: 23)),
+            MapSearchBox(),
           ],
         ),
         Positioned(
@@ -46,9 +46,9 @@ class _MapScreenState extends State<MapScreen> {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Distance'),
-                    const Text('8 km',
+                  children: const [
+                    Text('Distance'),
+                    Text('8 km',
                         style:
                             TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                   ],
@@ -57,9 +57,9 @@ class _MapScreenState extends State<MapScreen> {
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Time'),
-                  const Text('60 min',
+                children: const [
+                  Text('Time'),
+                  Text('60 min',
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                 ],
