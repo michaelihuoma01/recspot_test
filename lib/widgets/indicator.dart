@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:recspot_test/helpers/colors.dart';
 
 class CardIndicator extends StatelessWidget {
   final bool? isActive;
   const CardIndicator({Key? key, required this.isActive}) : super(key: key);
 
-  static List<Widget>  buildPageIndicator(int length, currentIndex) {
+  static List<Widget> buildPageIndicator(int length, currentIndex) {
     final list = <Widget>[];
     for (var i = 0; i < length; i++) {
       list.add(i == currentIndex
@@ -14,7 +15,7 @@ class CardIndicator extends StatelessWidget {
     return list;
   }
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
@@ -23,9 +24,7 @@ class CardIndicator extends StatelessWidget {
       height: 4.0,
       width: isActive! ? 25.0 : 10.0,
       decoration: BoxDecoration(
-        color: isActive!
-            ? Colors.deepPurpleAccent
-            : Colors.deepPurpleAccent.withOpacity(0.4),
+        color: isActive! ? AppColors.purple : AppColors.purple.withOpacity(0.4),
         borderRadius: const BorderRadius.all(Radius.circular((25))),
       ),
     );

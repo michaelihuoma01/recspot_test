@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:recspot_test/helpers/colors.dart';
 
 class CategoryIcon extends StatelessWidget {
-  String? title;
-  Widget icon;
-  Function()? onTap;
+  final String? title;
+  final Widget icon;
+  final Function()? onTap;
 
-  CategoryIcon({required this.title, required this.icon, this.onTap});
+  const CategoryIcon(
+      {Key? key, required this.title, required this.icon, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +23,20 @@ class CategoryIcon extends StatelessWidget {
                 height: 90,
                 width: 90,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 0.5,
-                    blurRadius: 5,
-                    offset: Offset(0, 0),
-                  )
-                ]),
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.grey.withOpacity(0.2),
+                        spreadRadius: 0.5,
+                        blurRadius: 5,
+                        offset: const Offset(0, 0),
+                      )
+                    ]),
                 child: icon),
           ),
           const SizedBox(height: 10),
-          Text(title!),
+          Text(title ?? ''),
         ],
       ),
     );

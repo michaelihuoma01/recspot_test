@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:recspot_test/helpers/colors.dart';
+import 'package:recspot_test/widgets/appbar_widget.dart';
 import 'package:recspot_test/widgets/card_widgets.dart';
 import 'package:recspot_test/screens/category.dart';
 import 'package:recspot_test/screens/map.dart';
@@ -26,13 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: const Text('Find Your Route',
-              style: TextStyle(fontSize: 23, color: Colors.black)),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child:
+              AppBarWidget(title: 'Find Your Route', bgColor: AppColors.white),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   // Textformfield defined in widgets folder
-                  Expanded(
+                  const Expanded(
                     child: TextFormFieldWidget(hintText: 'Search your route'),
                   ),
                   Padding(
@@ -49,21 +49,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 60,
                         width: 60,
                         decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.1),
+                          color: AppColors.grey.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Icon(Icons.search,
-                            size: 24, color: Colors.black)),
+                            size: 24, color: AppColors.black)),
                   )
                 ],
               ),
               Center(
                 child: TCard(
                   cards: cards,
-                  lockYAxis: false,
+                  lockYAxis: true,
                   size: const Size(290, 350),
                   controller: _controller,
                   onForward: (index, info) {
+                    setState(() {
+                      _currentIndex = index;
+                      _currentIndex - 1;
+                    });
+                  },
+                  onBack: (index, info) {
                     setState(() {
                       _currentIndex = index;
                       _currentIndex - 1;
@@ -77,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              const SizedBox(height: 10),
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -86,6 +92,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       cards.length, _currentIndex),
                 ),
               ),
+              // Icon to Reverse cards
+              GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _controller.back();
+                    });
+                  },
+                  child: const Center(
+                      child: Icon(FontAwesomeIcons.arrowRotateLeft,
+                          color: AppColors.grey))),
               const SizedBox(height: 20),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -96,13 +112,13 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: OverflowBar(
+                  alignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CategoryIcon(
                       title: 'Map',
                       icon: const Icon(FontAwesomeIcons.mapLocationDot,
-                          color: Colors.deepPurpleAccent, size: 26),
+                          color: AppColors.purple, size: 26),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -113,13 +129,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     CategoryIcon(
                       title: 'Tourists',
                       icon: const Icon(FontAwesomeIcons.peopleGroup,
-                          color: Colors.orange, size: 28),
+                          color: AppColors.appColor, size: 28),
                       onTap: () {},
                     ),
                     CategoryIcon(
                       title: 'Places',
                       icon: const Icon(FontAwesomeIcons.umbrellaBeach,
-                          color: Colors.green, size: 26),
+                          color: AppColors.green, size: 26),
                       onTap: () {
                         Navigator.push(
                             context,

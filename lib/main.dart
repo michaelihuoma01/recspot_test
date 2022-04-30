@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:recspot_test/screens/home.dart';
+import 'package:recspot_test/widgets/error_page.dart';
 
 void main() {
+  ErrorWidget.builder = (details) {
+    return   ErrorPage(error: details.exception.toString());
+  };
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
- 
+
   @override
   Widget build(BuildContext context) {
-    return   MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        bottomSheetTheme: BottomSheetThemeData(
-            backgroundColor: Colors.transparent),
-      ),
       home: HomeScreen(),
     );
   }

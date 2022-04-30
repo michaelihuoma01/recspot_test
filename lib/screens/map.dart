@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart'; 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; 
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:recspot_test/helpers/colors.dart';
+import 'package:recspot_test/widgets/appbar_widget.dart';
 import 'package:recspot_test/widgets/map_search_box.dart';
 
 class MapScreen extends StatefulWidget {
@@ -13,7 +15,10 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.orange, elevation: 0),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(40),
+        child: AppBarWidget(bgColor: AppColors.appColor),
+      ),
       body: Stack(children: [
         // Maps image used in place of maps
         Positioned(
@@ -26,20 +31,21 @@ class _MapScreenState extends State<MapScreen> {
           width: double.infinity,
           height: 80,
           decoration: const BoxDecoration(
-              color: Colors.orange,
+              color: AppColors.appColor,
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30))),
         ),
         // Map search box defined in widgets folder
         Column(
-          children:  const [
-            Text('Your Route', style:   TextStyle(color: Colors.white, fontSize: 23)),
+          children: const [
+            Text('Your Route',
+                style: TextStyle(color: AppColors.white, fontSize: 23)),
             MapSearchBox(),
           ],
         ),
         Positioned(
-         bottom: 0,
+          bottom: 0,
           child: Row(
             children: [
               Padding(
@@ -49,8 +55,8 @@ class _MapScreenState extends State<MapScreen> {
                   children: const [
                     Text('Distance'),
                     Text('8 km',
-                        style:
-                            TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -70,8 +76,8 @@ class _MapScreenState extends State<MapScreen> {
       ]),
       floatingActionButton: const FloatingActionButton(
         onPressed: null,
-        backgroundColor: Colors.white,
-        child: Icon(FontAwesomeIcons.circleDot, color: Colors.blue),
+        backgroundColor: AppColors.white,
+        child: Icon(FontAwesomeIcons.circleDot, color: AppColors.blue),
       ),
     );
   }

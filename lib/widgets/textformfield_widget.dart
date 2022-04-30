@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recspot_test/helpers/colors.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  String? hintText;
-    TextFormFieldWidget({this.hintText})  ;
+  final String? hintText;
+  const TextFormFieldWidget({Key? key, this.hintText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +15,12 @@ class TextFormFieldWidget extends StatelessWidget {
                 topRight: Radius.circular(10),
                 bottomRight: Radius.circular(10)),
           ),
-          hintText: hintText,
+          hintText: hintText ?? '',
           filled: true,
-          fillColor: Colors.grey.withOpacity(0.1),
-          hintStyle: const TextStyle(color: Colors.grey)),
-      style: const TextStyle(color: Colors.black),
-      cursorColor: Colors.orange,
+          fillColor: AppColors.grey.withOpacity(0.1),
+          hintStyle: const TextStyle(color: AppColors.grey)),
+      style: const TextStyle(color: AppColors.black),
+      cursorColor: AppColors.appColor,
     );
   }
 }

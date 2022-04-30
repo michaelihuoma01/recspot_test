@@ -30,14 +30,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  tcard:
+    git:
+      url: https://github.com/michaelihuoma01/tcard.git
+      ref: feature/StackCardsHorizontally
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  swiping_card_deck: ^1.2.0
-  tcard: ^1.3.5
   font_awesome_flutter: ^10.1.0
   flutter_svg_provider: ^1.0.3
-  google_maps_flutter: ^2.1.4
   sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:

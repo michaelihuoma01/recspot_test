@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:recspot_test/helpers/colors.dart';
 
 class CardWidgets {
   static List<Widget> cards() {
     List<Widget> cards = [
       Container(
-        child: Image(
-          width: 250,
-          height: 100,
+        child: const Image(
+          width: 290,
+          height: 350,
           image: Svg('assets/svg/bicycle.svg'),
         ),
         decoration: BoxDecoration(
-            color: Colors.orange, borderRadius: BorderRadius.circular(20)),
+            color: AppColors.appColor, borderRadius: BorderRadius.circular(20)),
       ),
       Container(
           decoration: BoxDecoration(
-              color: Colors.orangeAccent.withOpacity(0.7),
+              color: AppColors.appColor.withOpacity(0.7),
               borderRadius: BorderRadius.circular(20))),
       Container(
           decoration: BoxDecoration(
-              color: Colors.orangeAccent.withOpacity(0.3),
+              color: AppColors.appColor.withOpacity(0.3),
               borderRadius: BorderRadius.circular(20)))
     ];
 
