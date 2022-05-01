@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   },
                   child: const Center(
-                      child: Icon(FontAwesomeIcons.arrowRotateLeft,
+                      child: Icon(FontAwesomeIcons.arrowRotateLeft, size: 20,
                           color: AppColors.grey))),
               const SizedBox(height: 20),
               const Padding(
